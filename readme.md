@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using Esplora.Client.Interfaces;
 using RestEase;
 
-namespace Monday.App
+namespace Esplora.App
 {
     public static class Program
     {
