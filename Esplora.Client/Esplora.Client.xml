@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Esplora.Client</name>
+    </assembly>
+    <members>
+        <member name="T:Esplora.Client.Interfaces.IEsploraClient">
+            <summary>
+                Blockstream Esplora Api Endpoints.
+                <see href="https://github.com/Blockstream/esplora/blob/master/API.md">See Api Spec.</see>
+            </summary>
+        </member>
+        <member name="M:Esplora.Client.Interfaces.IEsploraClient.GetTransaction(System.String)">
+            <summary>
+                Returns information about the transaction.
+            </summary>
+            <param name="txid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Esplora.Client.Interfaces.IEsploraClient.PostTransaction(System.String)">
+            <summary>
+                Broadcast a raw transaction to the network. [The transaction should be provided as hex in the request body.]
+            </summary>
+            <param name="transactionInHexFormat"></param>
+            <returns>The txid will be returned on success.</returns>
+        </member>
+        <member name="M:Esplora.Client.Interfaces.IEsploraClient.GetTransactionStatus(System.String)">
+            <summary>
+                Returns the transaction confirmation status.
+            </summary>
+            <param name="txid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Esplora.Client.Interfaces.IEsploraClient.GetTransactionInHexFormat(System.String)">
+            <summary>
+                Returns the information in hex.
+            </summary>
+            <param name="txid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Esplora.Client.Interfaces.IEsploraClient.GetTransactionInBinaryFormat(System.String)">
+            <summary>
+                Returns the information in binary.
+            </summary>
+            <param name="txid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Esplora.Client.Interfaces.IEsploraClient.GetTransactionInMerkelBlockProofFormat(System.String)">
+            <summary>
+                Returns a merkle inclusion proof for the transaction using bitcoind's merkleblock format.
+            </summary>
+            <param name="txid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Esplora.Client.Interfaces.IEsploraClient.GetTransactionInMerkelProofFormat(System.String)">
+            <summary>
+                Returns a merkle inclusion proof for the transaction using Electrum's blockchain.transaction.get_merkle format.
+            </summary>
+            <param name="txid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Esplora.Client.Interfaces.IEsploraClient.GetSpentTransactionStatus(System.String,System.Int32)">
+            <summary>
+                Returns the spending status of a transaction output.
+            </summary>
+            <param name="txid"></param>
+            <param name="vout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Esplora.Client.Interfaces.IEsploraClient.GetSpentTransactions(System.String)">
+            <summary>
+                Returns the spending status of all transaction outputs.
+            </summary>
+            <param name="txid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Esplora.Client.Interfaces.IEsploraClient.GetAddress(System.String)">
+            <summary>
+                Get information about an address.
+            </summary>
+            <param name="address"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Esplora.Client.Interfaces.IEsploraClient.GetAddressesByPrefix(System.String)">
+            <summary>
+                Search for addresses beginning with the request. [Returns 10 results per request.]
+            </summary>
+            <param name="address"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Esplora.Client.Interfaces.IEsploraClient.GetAddressConfirmedTransactions(System.String)">
+            <summary>
+                Get transaction history for the specified address, sorted with newest first. [Returns up to 50 mempool transactions
+                plus the first 25 confirmed transactions. You can request more confirmed transactions using the override with
+                txid.]
+            </summary>
+            <param name="address"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Esplora.Client.Interfaces.IEsploraClient.GetAddressConfirmedTransactions(System.String,System.String)">
+            <summary>
+                Get confirmed transaction history for the specified address, sorted with newest first. [Returns 25 transactions per
+                request.]
+            </summary>
+            <param name="address"></param>
+            <param name="txid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Esplora.Client.Interfaces.IEsploraClient.GetAddressUnConfirmedTransactions(System.String)">
+            <summary>
+                Get unconfirmed transaction history for the specified address. [Returns up to 50 transactions.]
+            </summary>
+            <param name="address"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Esplora.Client.Interfaces.IEsploraClient.GetAddressUnspentTransactions(System.String)">
+            <summary>
+                Get the list of unspent transaction outputs associated with the address.
+            </summary>
+            <param name="address"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Esplora.Client.Interfaces.IEsploraClient.GetLatestBlockHash">
+            <summary>
+                Returns the hash of the last block.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Esplora.Client.Interfaces.IEsploraClient.GetLatestBlockHeight">
+            <summary>
+                Returns the height of the last block.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Esplora.Client.Interfaces.IEsploraClient.GetBlock(System.String)">
+            <summary>
+                Returns information about a block.
+            </summary>
+            <param name="hash"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Esplora.Client.Interfaces.IEsploraClient.GetBlockStatus(System.String)">
+            <summary>
+                Returns the block status.
+            </summary>
+            <param name="hash"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Esplora.Client.Interfaces.IEsploraClient.GetBlockAtHeight(System.String)">
+            <summary>
+                Returns the hash of the block currently at height.
+            </summary>
+            <param name="height"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Esplora.Client.Interfaces.IEsploraClient.GetBlocksAtHeight(System.String)">
+            <summary>
+                Returns the 10 newest blocks starting at the tip or at height if specified.
+            </summary>
+            <param name="height"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Esplora.Client.Interfaces.IEsploraClient.GetBlockTransactions(System.String,System.String)">
+            <summary>
+                Returns a list of transactions in the block (up to 25 transactions beginning at txid).
+            </summary>
+            <param name="hash"></param>
+            <param name="txid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Esplora.Client.Interfaces.IEsploraClient.GetBlockTransactionIds(System.String)">
+            <summary>
+                Returns a list of all txids in the block
+            </summary>
+            <param name="hash"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Esplora.Client.Interfaces.IEsploraClient.GetBlockInBinaryFormat(System.String)">
+            <summary>
+                Returns the raw block representation in binary.
+            </summary>
+            <param name="hash"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Esplora.Client.Interfaces.IEsploraClient.GetMemoryPoolBacklogStatistics">
+            <summary>
+                Get mempool backlog statistics.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Esplora.Client.Interfaces.IEsploraClient.GetMemoryPoolTransactionsIds">
+            <summary>
+                Get the full list of txids in the mempool as an array. [The order of the txids is arbitrary and does not match
+                bitcoind's.]
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Esplora.Client.Interfaces.IEsploraClient.GetLatestMemoryPoolTransactions">
+            <summary>
+                Get a list of the last 10 transactions to enter the mempool.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Esplora.Client.Interfaces.IEsploraClient.GetFeeEstimates">
+            <summary>
+                Get an object where the key is the confirmation target (in number of blocks) and the value is the estimated feerate
+                (in sat/vB). [The available confirmation targets are 1-25, 144, 504 and 1008 blocks.]
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
