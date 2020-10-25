@@ -2,6 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Clint Masden</Authors>
+    <Company>NA</Company>
+    <Product>Blockstream Esplora Client</Product>
+    <Description>Blockstream Esplora Client Interface</Description>
+    <PackageLicenseFile>mit-license.txt</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/clintmasden/blockstream.esplora.client</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/clintmasden/blockstream.esplora.client</RepositoryUrl>
+    <PackageTags>Bitcoin Blockchain Blockstream Esplora Client</PackageTags>
+    <PackageReleaseNotes>Corrections &amp; updates.</PackageReleaseNotes>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <FileVersion>1.0.0.1</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -11,5 +23,12 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="RestEase" Version="1.4.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\mit-license.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 </Project>

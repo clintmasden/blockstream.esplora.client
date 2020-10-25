@@ -20,7 +20,7 @@ namespace Esplora.App
         {
             var client = RestClient.For<IEsploraClient>("https://blockstream.info/api/");
 
-            var confirmedTransactions = await EsploraClient.GetAddressConfirmedTransactions("3D2oetdNuZUqQHPJmcMDDHYoqkyNVsFk9r");
+            var confirmedTransactions = await client.GetAddressConfirmedTransactions("3D2oetdNuZUqQHPJmcMDDHYoqkyNVsFk9r");
 
             confirmedTransactions.ForEach(transaction => Console.WriteLine($"{transaction.Txid}. {transaction.Version}"));
             Console.Read();

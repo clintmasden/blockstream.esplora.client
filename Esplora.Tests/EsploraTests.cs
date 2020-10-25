@@ -34,11 +34,12 @@ namespace Esplora.Tests
             TestContext.WriteLine(result.ToString());
         }
 
+        [Ignore]
         [TestMethod]
         public async Task PostTransaction_Pass()
         {
-            //var result = await EsploraClient.PostTransaction("NOT-CONFIRMED");
-            //Assert.IsTrue(result != null);
+            var result = await EsploraClient.PostTransaction("NOT-CONFIRMED");
+            Assert.IsTrue(result != null);
         }
 
         [TestMethod]
@@ -215,7 +216,22 @@ namespace Esplora.Tests
         [TestMethod]
         public async Task GetBlockTransactions_Pass()
         {
-            var result = await EsploraClient.GetBlockTransactions("00000000000000000007d70bf1b41ec7e11b1a5028ae139075f9bac90c345ea9", string.Empty);
+            var transactionsCount = await EsploraClient.GetBlockTransactionIds("00000000000000000007d70bf1b41ec7e11b1a5028ae139075f9bac90c345ea9");
+            Assert.IsTrue(transactionsCount != null);
+
+            for (var index = 0; index < transactionsCount.Count; index += 25)
+            {
+                var result = await EsploraClient.GetBlockTransactions("00000000000000000007d70bf1b41ec7e11b1a5028ae139075f9bac90c345ea9", index);
+                Assert.IsTrue(result != null);
+
+                TestContext.WriteLine(result.ToString());
+            }
+        }
+
+        [TestMethod]
+        public async Task GetBlockTransactionByIndex_Pass()
+        {
+            var result = await EsploraClient.GetBlockTransactionIdByIndex("00000000000000000007d70bf1b41ec7e11b1a5028ae139075f9bac90c345ea9", 0);
             Assert.IsTrue(result != null);
 
             TestContext.WriteLine(result.ToString());

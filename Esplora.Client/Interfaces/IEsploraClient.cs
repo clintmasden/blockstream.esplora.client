@@ -183,13 +183,22 @@ namespace Esplora.Client.Interfaces
         Task<List<Block>> GetBlocksAtHeight([Path] string height);
 
         /// <summary>
-        ///     Returns a list of transactions in the block (up to 25 transactions beginning at txid).
+        ///     Returns a list of transactions in the block (up to 25 transactions beginning at the index).
         /// </summary>
         /// <param name="hash"></param>
-        /// <param name="txid"></param>
+        /// <param name="index"></param>
         /// <returns></returns>
-        [Get("block/{hash}/txs/{txid}")]
-        Task<List<Transaction>> GetBlockTransactions([Path] string hash, [Path] string txid);
+        [Get("block/{hash}/txs/{index}")]
+        Task<List<Transaction>> GetBlockTransactions([Path] string hash, [Path] int index);
+
+        /// <summary>
+        /// Returns the transaction at index within the specified block.
+        /// </summary>
+        /// <param name="hash"></param>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        [Get("block/{hash}/txid/{index}")]
+        Task<string> GetBlockTransactionIdByIndex([Path] string hash, [Path] int index);
 
         /// <summary>
         ///     Returns a list of all txids in the block
